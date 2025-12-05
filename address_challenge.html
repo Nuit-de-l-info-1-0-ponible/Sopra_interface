@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'Inscription</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Créer un Compte</h1>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="name">Nom Complet (Une lettre par case)</label>
+                <div id="name-container" class="name-columns">
+                    <!-- Généré par JS -->
+                </div>
+                <input type="hidden" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Adresse Email</label>
+                <div class="email-widget">
+                    <div id="email-display" class="email-display"></div>
+                    <input type="hidden" id="email" name="email">
+
+                    <div class="slider-container">
+                        <div id="current-char" class="current-char-display">a</div>
+                        <input type="range" id="char-slider" min="0" max="100" value="0" class="char-slider">
+                    </div>
+
+                    <div class="email-controls">
+                        <button type="button" id="add-char-btn" class="btn-secondary">Ajouter</button>
+                        <button type="button" id="backspace-btn" class="btn-secondary"
+                            style="background-color: #ef4444;">⌫</button>
+                    </div>
+                    <p style="font-size: 0.75rem; color: #64748b; margin-top: 0.5rem;">Glissez pour trouver votre
+                        caractère, puis cliquez sur Ajouter.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Adresse de Livraison</label>
+                <input type="text" id="address" name="address" class="readonly-input"
+                    placeholder="Cliquez pour sélectionner le lieu..." readonly required>
+                <p style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">Nous avons besoin de votre position
+                    précise pour la livraison par drone.</p>
+            </div>
+            <button type="submit" class="cta-button" style="width: 100%;">Terminer l'Inscription</button>
+        </form>
+    </div>
+
+    <!-- Map Modal -->
+    <div id="mapModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Sélectionner le Lieu</span>
+                <button class="close-button" id="closeModal">&times;</button>
+            </div>
+            <div style="position: relative;">
+                <div id="map"></div>
+                <div class="crosshair"></div>
+            </div>
+            <div class="map-controls">
+                <span id="statusText" style="font-size: 0.875rem; color: #64748b;">Localisation du satellite...</span>
+                <button type="button" id="confirmLocation" class="btn-primary">Confirmer la Position</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="challenge.js"></script>
+</body>
+
+</html>
